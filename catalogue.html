@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KATALOG — BLOOMIÈRE</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="header__nav">
+      <a href="index.html" class="nav__link">STARTSEITE</a>
+      <a href="catalogue.html" class="nav__link">KATALOG</a>
+      <a href="contact.html" class="nav__link">KONTAKT</a>
+    </nav>
+    <a href="index.html" class="header__logo">BLOOMIÈRE</a>
+    <div class="header__icons">
+      <button class="icon-btn" id="searchBtn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-overlay__inner">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="GIB ETWAS EIN..." class="search-input"/>
+      <button class="search-close" id="searchClose">✕</button>
+    </div>
+  </div>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+      <h3>WARENKORB</h3>
+      <button class="cart-drawer__close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-drawer__body">
+      <p class="cart-empty">DEIN WARENKORB IST LEER</p>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="page-header">
+    <p class="breadcrumb">STARTSEITE / SHOP / PRODUKTE</p>
+    <h1>PRODUKTE</h1>
+  </div>
+
+  <div class="catalogue-toolbar">
+    <div class="toolbar__grid-btns">
+      <button class="grid-btn active" title="Grid">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="7" height="7"/><rect x="9" y="0" width="7" height="7"/><rect x="0" y="9" width="7" height="7"/><rect x="9" y="9" width="7" height="7"/></svg>
+      </button>
+      <button class="grid-btn" title="Large Grid">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="4" height="4"/><rect x="6" y="0" width="4" height="4"/><rect x="12" y="0" width="4" height="4"/><rect x="0" y="6" width="4" height="4"/><rect x="6" y="6" width="4" height="4"/><rect x="12" y="6" width="4" height="4"/></svg>
+      </button>
+      <button class="grid-btn" title="List">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="1" width="16" height="2"/><rect x="0" y="7" width="16" height="2"/><rect x="0" y="13" width="16" height="2"/></svg>
+      </button>
+    </div>
+    <p class="toolbar__info">5 PRODUKTE</p>
+    <div class="toolbar__sort">
+      <select>
+        <option>SORTIEREN NACH</option>
+        <option>Preis: Niedrig zu Hoch</option>
+        <option>Preis: Hoch zu Niedrig</option>
+        <option>Neueste zuerst</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="catalogue-layout">
+    <aside class="catalogue-filters">
+      <div class="filter-group">
+        <h4>VERFÜGBARKEIT <span>▾</span></h4>
+        <label class="filter-option"><input type="checkbox"/> Auf Lager</label>
+        <label class="filter-option"><input type="checkbox"/> Ausverkauft</label>
+      </div>
+      <div class="filter-group">
+        <h4>PREIS <span>▾</span></h4>
+        <label class="filter-option"><input type="checkbox"/> €0 – €50</label>
+        <label class="filter-option"><input type="checkbox"/> €50 – €100</label>
+        <label class="filter-option"><input type="checkbox"/> €100+</label>
+      </div>
+      <div class="filter-group">
+        <h4>KATEGORIE <span>▾</span></h4>
+        <label class="filter-option"><input type="checkbox"/> Stationery</label>
+        <label class="filter-option"><input type="checkbox"/> Accessories</label>
+        <label class="filter-option"><input type="checkbox"/> Beauty</label>
+        <label class="filter-option"><input type="checkbox"/> Fashion</label>
+      </div>
+    </aside>
+
+    <main class="catalogue-products">
+      <div class="catalogue-grid" id="catalogueGrid">
+        <!-- filled by JS -->
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>NEWSLETTER</h4>
+        <p>Sign up to our newsletter to receive exclusive offers.</p>
+        <input type="email" placeholder="E-Mail" class="footer__input"/>
+        <button class="btn btn--black footer__sub-btn">ABONNIEREN</button>
+      </div>
+      <div class="footer__col">
+        <h4>FUSSZEILENMENÜ</h4>
+        <ul><li><a href="#">Suche</a></li></ul>
+      </div>
+      <div class="footer__col">
+        <h4>ABOUT</h4>
+        <p>Use this text area to tell your customers about your brand and vision.</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 - BLOOMIÈRE POWERED BY GITHUB PAGES</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const allProducts = [
+      { name: 'EXAMPLE PRODUCT', price: 100.00, sold: true },
+      { name: 'EXAMPLE PRODUCT', price: 100.00, sold: true },
+      { name: 'EXAMPLE PRODUCT', price: 100.00, sold: true },
+      { name: 'EXAMPLE PRODUCT', price: 100.00, sold: false },
+      { name: 'EXAMPLE PRODUCT', price: 100.00, sold: false },
+    ];
+    const svgs = [
+      `<svg viewBox="0 0 160 200" fill="none"><g stroke="#aaa" stroke-width="1.2"><rect x="30" y="40" width="100" height="130" rx="6"/><line x1="50" y1="40" x2="40" y2="18"/><line x1="110" y1="40" x2="120" y2="18"/><line x1="40" y1="18" x2="120" y2="18"/><rect x="55" y="70" width="50" height="6" rx="2"/><rect x="60" y="100" width="40" height="40" rx="3"/></g></svg>`,
+      `<svg viewBox="0 0 200 150" fill="none"><g stroke="#aaa" stroke-width="1.2"><rect x="10" y="20" width="180" height="120" rx="4"/><circle cx="50" cy="60" rx="30" ry="30" r="30"/><ellipse cx="150" cy="80" rx="35" ry="25"/></g></svg>`,
+      `<svg viewBox="0 0 200 180" fill="none"><g stroke="#aaa" stroke-width="1.2"><path d="M100 20 L180 150 L20 150 Z"/><circle cx="100" cy="110" r="25"/><rect x="80" y="155" width="40" height="15" rx="2"/></g></svg>`,
+      `<svg viewBox="0 0 180 200" fill="none"><g stroke="#aaa" stroke-width="1.2"><rect x="20" y="30" width="140" height="160" rx="8"/><rect x="40" y="60" width="100" height="8" rx="3"/><rect x="40" y="85" width="70" height="6" rx="2"/><rect x="40" y="105" width="90" height="6" rx="2"/></g></svg>`,
+      `<svg viewBox="0 0 160 160" fill="none"><g stroke="#aaa" stroke-width="1.2"><ellipse cx="80" cy="80" rx="60" ry="60"/><ellipse cx="80" cy="80" rx="40" ry="40"/><line x1="80" y1="20" x2="80" y2="140"/><line x1="20" y1="80" x2="140" y2="80"/></g></svg>`,
+    ];
+    const catalogueGrid = document.getElementById('catalogueGrid');
+    if (catalogueGrid) {
+      catalogueGrid.innerHTML = allProducts.map((p, i) => `
+        <div class="product-card" onclick="${!p.sold ? `addToCart('${p.name}', ${p.price})` : ''}">
+          <div class="product-card__img">
+            ${p.sold ? '<span class="product-card__badge">AUSVERKAUFT</span>' : ''}
+            ${svgs[i % svgs.length]}
+          </div>
+          <p class="product-card__name">${p.name}</p>
+          <p class="product-card__price">€${p.price.toFixed(2)}</p>
+          <p class="product-card__stars">★★★★☆ (4.5)</p>
+          ${!p.sold ? `<button class="btn btn--black product-card__add">ADD TO CART</button>` : ''}
+        </div>`).join('');
+    }
+  </script>
+</body>
+</html>
